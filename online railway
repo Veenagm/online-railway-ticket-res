@@ -1,0 +1,218 @@
+🚆 Online Railway Ticket Reservation System
+
+An Online Railway Ticket Reservation System developed using HTML, CSS, JavaScript, Node.js, Express.js, and MySQL. This project provides a simple web-based platform for searching trains, booking tickets, checking booking details, and cancelling reservations.
+
+📌 Project Overview
+
+The Online Railway Ticket Reservation System is designed to simplify the railway ticket booking process through a user-friendly web interface.
+
+Users can search for available trains by entering their source station, destination station, and journey date. They can also book tickets, retrieve booking details using a PNR number, and cancel existing reservations.
+
+✨ Features
+🔍 Search trains by source, destination, and journey date.
+🎫 Book railway tickets online.
+👤 Enter passenger details during booking.
+🧾 Generate and retrieve PNR-based booking details.
+❌ Cancel existing reservations.
+💾 Store train and booking information in a MySQL database.
+📱 Simple and user-friendly web interface.
+🔗 REST API integration between frontend and backend.
+🛠️ Technologies Used
+Technology	Purpose
+HTML5	Website structure
+CSS3	Styling and layout
+JavaScript	Frontend functionality
+Node.js	Backend runtime
+Express.js	REST API development
+MySQL	Database management
+mysql2	MySQL database connectivity
+dotenv	Environment configuration
+📂 Project Structure
+text
+online-railway-ticket-res/
+│
+├── database/
+│   └── schema.sql
+│
+├── web/
+│   ├── index.html
+│   ├── style.css
+│   └── app.js
+│
+├── .env.example
+├── .gitignore
+├── package.json
+├── package-lock.json
+├── server.js
+└── README.md
+
+⚙️ Installation and Setup
+
+Follow these steps to run the project on your local machine.
+
+1. Prerequisites
+
+Install the following software:
+
+Node.js
+MySQL Server or XAMPP
+Visual Studio Code
+MySQL Workbench or phpMyAdmin (optional)
+2. Clone the Repository
+bash
+git clone https://github.com/Veenagm/online-railway-ticket-res.git
+
+
+Navigate to the project directory:
+
+bash
+cd online-railway-ticket-res
+
+3. Install Dependencies
+bash
+npm install
+
+4. Configure the Database
+Start your MySQL server.
+Open MySQL Workbench or phpMyAdmin.
+Locate database/schema.sql.
+Execute the SQL script.
+
+This creates the railway_db database and the required tables:
+
+trains
+bookings
+
+It also inserts sample train records.
+
+5. Configure Environment Variables
+
+Copy .env.example and create a new file named .env in the project root.
+
+Configure your MySQL credentials:
+
+env
+PORT=3000
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=
+DB_NAME=railway_db
+
+
+Update the username and password according to your MySQL configuration.
+
+Note: For a default XAMPP MySQL setup, the username is usually root and the password may be blank.
+
+6. Start the Application
+
+Run the following command:
+
+bash
+npm start
+
+
+For development mode:
+
+bash
+npm run dev
+
+7. Open the Application
+
+Open your browser and visit:
+
+http://localhost:3000
+
+The Online Railway Ticket Reservation System is now ready to use!
+
+🔌 API Endpoints
+
+The backend provides the following REST API endpoints:
+
+Method	Endpoint	Description
+GET	/api/trains	Search available trains
+POST	/api/book	Book a railway ticket
+GET	/api/booking?pnr=PNR_NUMBER	Retrieve booking details
+POST	/api/cancel	Cancel a booking
+GET	/api/health	Check server status
+Example API Requests
+
+Search Trains
+
+http
+GET /api/trains?from=Bengaluru&to=Hubballi&date=2026-12-10
+
+
+Book a Ticket
+
+http
+POST /api/book
+
+
+Retrieve Booking Details
+
+http
+GET /api/booking?pnr=PNR_NUMBER
+
+
+Cancel a Ticket
+
+http
+POST /api/cancel
+
+🗄️ Database
+
+The project uses MySQL as its database management system.
+
+The database contains two main tables:
+
+1. Trains
+
+Stores train information, including:
+
+Train ID
+Train number
+Train name
+Source and destination
+Departure and arrival times
+Ticket fare
+Total seats
+
+2. Bookings
+
+Stores passenger reservation information, including:
+
+PNR number
+Train ID
+Journey date
+Passenger name
+Age and gender
+Number of seats
+Total fare
+Booking status
+Booking timestamp
+🚀 Future Enhancements
+User registration and login.
+Secure user authentication.
+Online payment gateway integration.
+Live train availability.
+Seat selection functionality.
+Email and SMS booking notifications.
+Admin dashboard for train management.
+Booking history and user profiles.
+🔒 Disclaimer
+
+This project is developed for educational and learning purposes.
+
+It is a sample railway reservation application and does not connect to the official Indian Railways reservation system or process real payments.
+
+Additional authentication, payment security, and production-level validation are required before real-world deployment.
+
+👨‍💻 Author
+
+Veenagm
+
+GitHub: https://github.com/Veenagm
+
+📜 License
+
+This project is available for educational and personal learning purposes. Add a formal open-source license if you intend to distribute it under specific reuse terms.
