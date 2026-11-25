@@ -1,0 +1,610 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "Segoe UI", Arial, sans-serif; background: #f2f5fa; color: #1d2733; }
+header { background: linear-gradient(90deg, #0b3d91, #1565c0); color: #fff; padding: 16px 24px; }
+header h1 { margin: 0 0 12px; font-size: 1.5rem; }
+nav { display: flex; gap: 8px; }
+.tab { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.5); padding: 8px 16px; border-radius: 6px; cursor: pointer; }
+.tab.active { background: #fff; color: #0b3d91; font-weight: 600; }
+main { max-width: 980px; margin: 24px auto; padding: 0 16px; }
+.hidden { display: none !important; }
+.card { background: #fff; border-radius: 10px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,.08); margin-bottom: 16px; }
+.row { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+.row.end { justify-content: flex-end; }
+label { display: flex; flex-direction: column; gap: 4px; font-size: .85rem; font-weight: 600; flex: 1; min-width: 140px; }
+input, select { padding: 9px 10px; border: 1px solid #c5cedb; border-radius: 6px; font-size: .95rem; }
+.btn { background: #1565c0; color: #fff; border: 0; padding: 10px 18px; border-radius: 6px; cursor: pointer; font-size: .95rem; }
+.btn:hover { background: #0b3d91; }
+.btn.secondary { background: #6b7a90; }
+.btn.danger { background: #c62828; }
+.btn:disabled { background: #b0b8c4; cursor: not-allowed; }
+.train { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.train h3 { margin: 0 0 4px; }
+.muted { color: #5b6a7e; font-size: .9rem; }
+.times { font-size: 1.05rem; font-weight: 600; }
+.badge { padding: 3px 10px; border-radius: 12px; font-size: .8rem; font-weight: 600; }
+.badge.ok { background: #e1f5e5; color: #1b6b2b; }
+.badge.low { background: #fff1d6; color: #915c00; }
+.badge.none, .badge.CANCELLED { background: #fde2e2; color: #a11b1b; }
+.badge.CONFIRMED { background: #e1f5e5; color: #1b6b2b; }
+.modal { position: fixed; inset: 0; background: rgba(0,0,0,.5); display: flex; align-items: center; justify-content: center; padding: 16px; }
+.modal-box { width: 100%; max-width: 460px; display: flex; flex-direction: column; gap: 12px; }
+.modal-box h2 { margin: 0; }
+.ticket { border-left: 6px solid #1565c0; }
+.ticket table { width: 100%; border-collapse: collapse; }
+.ticket td { padding: 6px 4px; border-bottom: 1px solid #eef1f6; }
+.ticket td:first-child { color: #5b6a7e; width: 40%; }
+.toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: #263238; color: #fff; padding: 12px 20px; border-radius: 8px; max-width: 90%; }
+.toast.err { background: #c62828; }
+
+/* Orange Train Homepage Banner */
+.train-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 45px;
+    margin: 25px auto;
+    background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+    border-radius: 20px;
+    max-width: 1200px;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-content h1 {
+    color: #d35400;
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    color: #444;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.hero-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 13px 25px;
+    background: #e87516;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.train-hero img {
+    width: 50%;
+    max-height: 320px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+@media (max-width: 700px) {
+    .train-hero {
+        flex-direction: column;
+        padding: 25px;
+    }
+
+    .train-hero img {
+        width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: 28px;
+    }
+}
+.login-image img {
+    width: 100%;
+    max-width: 450px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+.register-image img {
+    width: 100%;
+    max-width: 450px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+/* Full-screen train background for Login and Register */
+
+.login-page,
+.register-page {
+    min-height: 100vh;
+    background-image: url("images/train-banner.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Add dark overlay for better visibility */
+.login-container,
+.register-container {
+    background: rgba(0, 0, 0, 0.35);
+    min-height: calc(100vh - 70px);
+    padding: 30px;
+}
+
+/* Make form cards clear */
+.login-card,
+.register-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+}
+/* Remove white backgrounds from Login and Register pages */
+
+.login-page,
+.register-page {
+    margin: 0;
+    min-height: 100vh;
+    background-image: url("images/train-banner.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Remove container backgrounds */
+.login-container,
+.register-container {
+    background: transparent !important;
+    min-height: calc(100vh - 70px);
+}
+
+/* Make login and register cards transparent */
+.login-card,
+.register-card {
+    background: transparent !important;
+    color: white;
+}
+
+/* Make headings and text visible */
+.login-card h2,
+.register-card h2,
+.login-card p,
+.register-card p,
+.login-card label,
+.register-card label {
+    color: white;
+}
+.login-card h2,
+.register-card h2,
+.login-card p,
+.register-card p,
+.login-card label,
+.register-card label {
+    color: white !important;
+}
+/* HOME PAGE NAVIGATION */
+.navbar nav a {
+    color: white !important;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* LOGIN AND REGISTER NAVIGATION */
+.login-page .navbar,
+.register-page .navbar {
+    background: #17365d !important;
+}
+
+.login-page .navbar nav a,
+.register-page .navbar nav a {
+    color: white !important;
+}
+
+/* LOGIN AND REGISTER TEXT */
+.login-card h2,
+.register-card h2 {
+    color: white !important;
+    font-size: 28px;
+}
+
+.login-card p,
+.register-card p,
+.login-card label,
+.register-card label {
+    color: white !important;
+    font-weight: bold;
+}
+
+/* FORM INPUT TEXT */
+.login-card input,
+.register-card input {
+    color: #222 !important;
+    background: white !important;
+}
+
+/* LOGIN AND REGISTER BUTTONS */
+.login-submit,
+.register-submit {
+    background: #e87516 !important;
+    color: white !important;
+    font-weight: bold;
+}
+
+/* LINKS */
+.login-card a,
+.register-card a {
+    color: #ffcc66 !important;
+    font-weight: bold;
+}
+
+/* ===== RAILBOOK HOME PAGE DESIGN ===== */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #263238;
+}
+
+/* HEADER */
+.main-header {
+    background: #17365d;
+    color: white;
+    padding: 18px 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.main-header nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.main-header nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.main-header nav a:hover {
+    color: #ffb347;
+}
+
+.main-header .tab {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 11px 16px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.main-header .tab.active,
+.main-header .tab:hover {
+    background: #e87516;
+    border-color: #e87516;
+}
+
+/* HERO BANNER */
+.train-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 50px;
+    margin: 25px auto;
+    max-width: 1200px;
+    background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+    border-radius: 18px;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-content h1 {
+    color: #d35400;
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    color: #444;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.train-hero img {
+    width: 50%;
+    max-height: 320px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.hero-btn {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 14px 25px;
+    background: #e87516;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.hero-btn:hover {
+    background: #c65d08;
+}
+
+/* FEATURES */
+.features {
+    text-align: center;
+    padding: 35px 20px;
+}
+
+.features h2,
+.panel h2 {
+    color: #17365d;
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+.feature-container {
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    flex-wrap: wrap;
+}
+
+.feature-card {
+    background: white;
+    padding: 25px;
+    width: 250px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.10);
+}
+
+.feature-card h3 {
+    color: #e87516;
+}
+
+.feature-card p {
+    color: #555;
+    line-height: 1.6;
+}
+
+/* SEARCH AND PNR */
+.panel {
+    max-width: 1100px;
+    margin: 35px auto;
+    padding: 25px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.10);
+}
+
+.row {
+    display: flex;
+    align-items: end;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.row label {
+    flex: 1;
+    min-width: 150px;
+}
+
+.panel input,
+.panel select {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    box-sizing: border-box;
+}
+
+/* BUTTONS */
+.btn {
+    background: #e87516;
+    color: white;
+    border: none;
+    padding: 13px 22px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: #c65d08;
+}
+
+.btn.secondary {
+    background: #607d8b;
+}
+
+/* FOOTER */
+.main-footer {
+    background: #17365d;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 700px) {
+    .main-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .train-hero {
+        flex-direction: column;
+        padding: 25px;
+        margin: 15px;
+    }
+
+    .train-hero img {
+        width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: 30px;
+    }
+
+    .feature-card {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .panel {
+        margin: 15px;
+        padding: 10px;
+    }
+}
+
+/* ===== BEAUTIFUL TRAIN SEARCH FORM ===== */
+
+#search {
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+#search h2 {
+    text-align: center;
+    color: #17365d;
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+#searchForm {
+    display: flex;
+    align-items: end;
+    gap: 20px;
+    padding: 30px;
+    background: #fff7ed;
+    border: 1px solid #ffe0b2;
+    border-radius: 12px;
+}
+
+#searchForm label {
+    color: #17365d;
+    font-weight: bold;
+}
+
+#searchForm input {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    border: 1px solid #d5dce5;
+    border-radius: 8px;
+    font-size: 15px;
+    box-sizing: border-box;
+    background: white;
+}
+
+#searchForm input:focus {
+    outline: none;
+    border-color: #e87516;
+    box-shadow: 0 0 5px rgba(232, 117, 22, 0.3);
+}
+
+#searchForm button {
+    min-width: 150px;
+    height: 45px;
+}
+
+@media (max-width: 700px) {
+    #searchForm {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+/* Improved Booking Popup */
+
+#modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 15px;
+}
+
+#modal.hidden {
+    display: none !important;
+}
+
+#modal .card {
+    background: white;
+    color: #333;
+    width: 100%;
+    max-width: 500px;
+    padding: 28px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+#modal h2 {
+    color: #174b75;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#modal label {
+    display: block;
+    margin: 12px 0 6px;
+    font-weight: 600;
+    color: #333;
+}
+
+#modal input,
+#modal select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    font-size: 15px;
+    background: white;
+    color: #333;
+}
+
+#modal input:focus,
+#modal select:focus {
+    outline: none;
+    border-color: #f28c28;
+}
+
+#totalFare {
+    font-weight: bold;
+    color: #e87516;
+    font-size: 20px;
+}
+
+#modal button {
+    margin-top: 15px;
+}

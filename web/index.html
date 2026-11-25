@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Online Railway Ticket Reservation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="main-header">
+        <div class="logo">
+            🚆 RailBook
+        </div>
+
+        <nav>
+            <button class="tab active" data-tab="search">Book Ticket</button>
+            <button class="tab" data-tab="pnr">PNR Status / Cancel</button>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+        </nav>
+    </header>
+
+    <!-- HERO BANNER -->
+    <section class="train-hero">
+        <div class="hero-content">
+            <h1>Explore India by Rail</h1>
+            <p>Discover new destinations and enjoy a comfortable journey.</p>
+            <a href="#search" class="hero-btn">Book Your Ticket</a>
+        </div>
+
+        <img src="images/train-banner.jpg" alt="Orange Train">
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features">
+        <h2>Why Choose RailBook?</h2>
+
+        <div class="feature-container">
+            <div class="feature-card">
+                <h3>🚆 Easy Booking</h3>
+                <p>Search trains and book your tickets easily.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>🎫 Quick Confirmation</h3>
+                <p>Get your booking details after confirmation.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>🔍 PNR Status</h3>
+                <p>Check your ticket status whenever you need.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEARCH AND BOOK -->
+    <main>
+        <section id="search" class="panel">
+
+            <h2>Search Your Train</h2>
+
+            <form id="searchForm" class="card row">
+
+                <label>
+                    From
+                    <input id="from" list="stations"
+                        placeholder="e.g. Bengaluru" required>
+                </label>
+
+                <label>
+                    To
+                    <input id="to" list="stations"
+                        placeholder="e.g. New Delhi" required>
+                </label>
+
+                <label>
+                    Journey Date
+                    <input id="date" type="date" required>
+                </label>
+
+                <button type="submit" class="btn">
+                    Search Trains
+                </button>
+
+            </form>
+
+            <datalist id="stations">
+                <option>Bengaluru</option>
+                <option>New Delhi</option>
+                <option>Mumbai</option>
+                <option>Chennai</option>
+                <option>Kolkata</option>
+                <option>Hyderabad</option>
+                <option>Bhopal</option>
+                <option>Hubballi</option>
+            </datalist>
+
+            <div id="results"></div>
+
+        </section>
+
+        <!-- PNR STATUS -->
+        <section id="pnr" class="panel hidden">
+
+            <h2>Check PNR Status</h2>
+
+            <form id="pnrForm" class="card row">
+
+                <label>
+                    PNR Number
+                    <input id="pnrInput"
+                        placeholder="10 digit PNR" required>
+                </label>
+
+                <button type="submit" class="btn">
+                    Check Status
+                </button>
+
+            </form>
+
+            <div id="pnrResult"></div>
+
+        </section>
+    </main>
+
+    <!-- BOOKING MODAL -->
+    <div id="modal" class="modal hidden">
+
+        <form id="bookForm" class="card modal-box">
+
+            <h2>Passenger Details</h2>
+
+            <p id="trainInfo" class="muted"></p>
+
+            <label>
+                Passenger Name
+                <input id="pname" required maxlength="80">
+            </label>
+
+            <div class="row">
+
+                <label>
+                    Age
+                    <input id="page" type="number"
+                        min="1" max="120" required>
+                </label>
+
+                <label>
+                    Gender
+                    <select id="pgender" required>
+                        <option value="">Select</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+                </label>
+
+                <label>
+                    Seats
+                    <input id="pseats" type="number"
+                        min="1" max="6" value="1" required>
+                </label>
+
+            </div>
+
+            <p>Total Fare: <b id="totalFare">₹0</b></p>
+
+            <div class="row end">
+                <button type="button" id="closeModal"
+                    class="btn secondary">Cancel</button>
+
+                <button type="submit" class="btn">
+                    Confirm Booking
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- MESSAGE -->
+    <div id="toast" class="toast hidden"></div>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <p>© 2026 RailBook | Online Railway Ticket Reservation</p>
+        <p>Travel Safe. Travel Happy. 🚆</p>
+    </footer>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
